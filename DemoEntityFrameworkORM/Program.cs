@@ -28,6 +28,7 @@ namespace DemoEntityFrameworkORM
             //                                    s.tblMaterial.FSpec,
             //                                    s.FQty
             //                                });
+
             SqlBuilder sqlBuilder = new SqlBuilder();
             ///Select必须在Where之后
             sqlBuilder.GetSql<tblOrderSub>(sl => sl.Where(s => !s.tblMaterial.tblCat3.tblCat2.tblCat1.FCat1.Equals("产品") && 

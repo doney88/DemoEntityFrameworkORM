@@ -34,7 +34,11 @@ namespace Framework
         /// Visit是个入口，解读node表示式
         /// 根据表达式的类型，将表达式调度到此类中更专用的访问方法之一的表达式
         /// </summary>
-        /// <param name="node"></param>
+        /// <param name="node"> 
+        /// Expression<Func<tblOrder, tblMaterial, tblCat3, tblCat2, tblCat1, tblOrderSub, bool>> expressionSqlFrom =
+        ///        (o, m, ccc, cc, c, os) => m.FCat3ID.Equals(ccc.FCat3ID) && ccc.FCat2ID.Equals(cc.FCat2ID) && cc.FCat1ID.Equals(c.FCat1ID) &&
+        ///                                    m.FMaterialID.Equals(os.FMaterialID) && os.FOrderID.Equals(o.FOrderID);
+        /// </param>
         /// <returns></returns>
         public override Expression Visit(Expression node)
         {

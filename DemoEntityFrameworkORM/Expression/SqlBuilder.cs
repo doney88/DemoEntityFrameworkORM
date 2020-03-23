@@ -47,16 +47,20 @@ namespace Framework
         }
         protected override Expression VisitMethodCall(MethodCallExpression node)
         {
-            if(node.Method.Name == "Where")
+            foreach (var arg in node.Arguments)
             {
-                whereVisitor.Visit(node.Arguments[1]);
+                Visit(arg);
             }
-            if (node.Method.Name == "Select")
+            switch (node.Method.Name)
             {
-                selectVisitor.Visit(node.Arguments[1]); //Visit Select lambda
-                Visit(node.Arguments[0]);//Visit Where Lambda
+                case "Where":
+                    whereVisitor.Visit(node.Arguments[1]); break;//Visit Where Lambda
+                case "Select":
+                    selectVisitor.Visit(node.Arguments[1]); break;//Visit Select lambda
+                default:
+                    break;
             }
-            return base.Visit(node);
+            return node;
         }
     }
 
