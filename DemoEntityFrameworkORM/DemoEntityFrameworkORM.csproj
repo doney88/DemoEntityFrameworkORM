@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8011C67-219D-49AB-A1D6-3EBA1D615CD9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DemoEntityFrameworkORM</RootNamespace>
+    <AssemblyName>DemoEntityFrameworkORM</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseModel.cs" />
+    <Compile Include="EFContext.cs" />
+    <Compile Include="Attributes.cs" />
+    <Compile Include="Expression\ExpressionExtend.cs" />
+    <Compile Include="Expression\ExpressionVisitorSqlFrom.cs" />
+    <Compile Include="Expression\ExpressionVisitorSqlOrderBy.cs" />
+    <Compile Include="Expression\ExpressionVisitorSqlSelect.cs" />
+    <Compile Include="Expression\ExpressionVisitorSqlWhere.cs" />
+    <Compile Include="Expression\NewExpressionVisitor.cs" />
+    <Compile Include="MyEntity.cs" />
+    <Compile Include="ORM\OrmDbSet.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Expression\SqlBuilder.cs" />
+    <Compile Include="Model\sysdiagram.cs" />
+    <Compile Include="Model\tblAccount.cs" />
+    <Compile Include="Model\tblAccountMonth.cs" />
+    <Compile Include="Model\tblAcetate.cs" />
+    <Compile Include="Model\tblAcetateCat.cs" />
+    <Compile Include="Model\tblAcetateDensity.cs" />
+    <Compile Include="Model\tblAcetateSize.cs" />
+    <Compile Include="Model\tblAcetateSub.cs" />
+    <Compile Include="Model\tblAkSpl.cs" />
+    <Compile Include="Model\tblAKTClientPayment.cs" />
+    <Compile Include="Model\tblAktClientShipment.cs" />
+    <Compile Include="Model\tblBank.cs" />
+    <Compile Include="Model\tblBankLocal.cs" />
+    <Compile Include="Model\tblBOM.cs" />
+    <Compile Include="Model\tblCat1.cs" />
+    <Compile Include="Model\tblCat2.cs" />
+    <Compile Include="Model\tblCat3.cs" />
+    <Compile Include="Model\tblCat3Process.cs" />
+    <Compile Include="Model\tblClaim.cs" />
+    <Compile Include="Model\tblClaimSub.cs" />
+    <Compile Include="Model\tblClient.cs" />
+    <Compile Include="Model\tblClientAddress.cs" />
+    <Compile Include="Model\tblClientAR.cs" />
+    <Compile Include="Model\tblClientARDetail.cs" />
+    <Compile Include="Model\tblClientARDetailSub.cs" />
+    <Compile Include="Model\tblClientContact.cs" />
+    <Compile Include="Model\tblClientQuality.cs" />
+    <Compile Include="Model\tblCompany.cs" />
+    <Compile Include="Model\tblComponent.cs" />
+    <Compile Include="Model\tblComponentBag.cs" />
+    <Compile Include="Model\tblComponentBagSub.cs" />
+    <Compile Include="Model\tblComponentBGSub.cs" />
+    <Compile Include="Model\tblComponentBOM.cs" />
+    <Compile Include="Model\tblComponentBox.cs" />
+    <Compile Include="Model\tblComponentCarton.cs" />
+    <Compile Include="Model\tblComponentCartonSub.cs" />
+    <Compile Include="Model\tblComponentCore.cs" />
+    <Compile Include="Model\tblComponentCoreSP.cs" />
+    <Compile Include="Model\tblComponentCoreSub.cs" />
+    <Compile Include="Model\tblComponentDMST.cs" />
+    <Compile Include="Model\tblComponentDWD.cs" />
+    <Compile Include="Model\tblComponentEyebrowSub.cs" />
+    <Compile Include="Model\tblComponentFrontSub.cs" />
+    <Compile Include="Model\tblComponentHinge.cs" />
+    <Compile Include="Model\tblComponentHingeF.cs" />
+    <Compile Include="Model\tblComponentHingeSub.cs" />
+    <Compile Include="Model\tblComponentJB.cs" />
+    <Compile Include="Model\tblComponentJBRaw.cs" />
+    <Compile Include="Model\tblComponentJBSub.cs" />
+    <Compile Include="Model\tblComponentLen.cs" />
+    <Compile Include="Model\tblComponentLenLR.cs" />
+    <Compile Include="Model\tblComponentLenRaw.cs" />
+    <Compile Include="Model\tblComponentLenRawSub.cs" />
+    <Compile Include="Model\tblComponentMetalFrontSub.cs" />
+    <Compile Include="Model\tblComponentMetalStickerSub.cs" />
+    <Compile Include="Model\tblComponentMillWQD.cs" />
+    <Compile Include="Model\tblComponentMould.cs" />
+    <Compile Include="Model\tblComponentPin.cs" />
+    <Compile Include="Model\tblComponentPinSub.cs" />
+    <Compile Include="Model\tblComponentPlate.cs" />
+    <Compile Include="Model\tblComponentPlateSub.cs" />
+    <Compile Include="Model\tblComponentPPN.cs" />
+    <Compile Include="Model\tblComponentQuality.cs" />
+    <Compile Include="Model\tblComponentScrew.cs" />
+    <Compile Include="Model\tblComponentScrewSub.cs" />
+    <Compile Include="Model\tblComponentSelfSealingBag.cs" />
+    <Compile Include="Model\tblComponentSelfSealingBagSub.cs" />
+    <Compile Include="Model\tblComponentSpringBox.cs" />
+    <Compile Include="Model\tblComponentSTN.cs" />
+    <Compile Include="Model\tblComponentSub.cs" />
+    <Compile Include="Model\tblComponentSubBOM.cs" />
+    <Compile Include="Model\tblComponentSubLR.cs" />
+    <Compile Include="Model\tblComponentTrim.cs" />
+    <Compile Include="Model\tblComponentTrimRaw.cs" />
+    <Compile Include="Model\tblComponentTrimSub.cs" />
+    <Compile Include="Model\tblComponentTT.cs" />
+    <Compile Include="Model\tblComponentYZ.cs" />
+    <Compile Include="Model\tblCurrencyType.cs" />
+    <Compile Include="Model\tblCust.cs" />
+    <Compile Include="Model\tblCustPrintingInfo.cs" />
+    <Compile Include="Model\tblCustPrintingInfoSub.cs" />
+    <Compile Include="Model\tblCustQuality.cs" />
+    <Compile Include="Model\tblDepartment.cs" />
+    <Compile Include="Model\tblDesignFront.cs" />
+    <Compile Include="Model\tblEmployee.cs" />
+    <Compile Include="Model\tblEngineerLenCategory.cs" />
+    <Compile Include="Model\tblEntryResignRecord.cs" />
+    <Compile Include="Model\tblHoliday.cs" />
+    <Compile Include="Model\tblHomeTown.cs" />
+    <Compile Include="Model\tblLenColor.cs" />
+    <Compile Include="Model\tblMaterial.cs" />
+    <Compile Include="Model\tblMaterialType.cs" />
+    <Compile Include="Model\tblMaterialWorkShop.cs" />
+    <Compile Include="Model\tblMillNQY.cs" />
+    <Compile Include="Model\tblMillNQYK.cs" />
+    <Compile Include="Model\tblMillTTD.cs" />
+    <Compile Include="Model\tblMillXD.cs" />
+    <Compile Include="Model\tblMouldTemplePunch.cs" />
+    <Compile Include="Model\tblMouldTemplePunchMould.cs" />
+    <Compile Include="Model\tblMWHIn.cs" />
+    <Compile Include="Model\tblMWHInBill.cs" />
+    <Compile Include="Model\tblMWHInBillType.cs" />
+    <Compile Include="Model\tblMWHIni.cs" />
+    <Compile Include="Model\tblMWHInP.cs" />
+    <Compile Include="Model\tblMWHInPBill.cs" />
+    <Compile Include="Model\tblMWHInPTemp.cs" />
+    <Compile Include="Model\tblMWHInTemp.cs" />
+    <Compile Include="Model\tblMWHOut.cs" />
+    <Compile Include="Model\tblMWHOutBill.cs" />
+    <Compile Include="Model\tblMWHOutTemp.cs" />
+    <Compile Include="Model\tblOrder.cs" />
+    <Compile Include="Model\tblOrderAnalyze.cs" />
+    <Compile Include="Model\tblOrderComponent.cs" />
+    <Compile Include="Model\tblOrderMould.cs" />
+    <Compile Include="Model\tblOrderPrintingInfo.cs" />
+    <Compile Include="Model\tblOrderPrintingInfoSpl.cs" />
+    <Compile Include="Model\tblOrderPrintingInfoSub.cs" />
+    <Compile Include="Model\tblOrderPrintingMould.cs" />
+    <Compile Include="Model\tblOrderProcessBOM.cs" />
+    <Compile Include="Model\tblOrderShipBatch.cs" />
+    <Compile Include="Model\tblOrderShipBatchSub.cs" />
+    <Compile Include="Model\tblOrderSub.cs" />
+    <Compile Include="Model\tblOrderSubBOM.cs" />
+    <Compile Include="Model\tblOrderSubBOMPacking.cs" />
+    <Compile Include="Model\tblPackingBackCard.cs" />
+    <Compile Include="Model\tblPackingMixType.cs" />
+    <Compile Include="Model\tblPackingTemplate.cs" />
+    <Compile Include="Model\tblPackingTemplateSub.cs" />
+    <Compile Include="Model\tblPara_GetFile.cs" />
+    <Compile Include="Model\tblPara_Letter.cs" />
+    <Compile Include="Model\tblPartsTemple.cs" />
+    <Compile Include="Model\tblPartsTempleSub.cs" />
+    <Compile Include="Model\tblPaymentTerm.cs" />
+    <Compile Include="Model\tblPDTWH.cs" />
+    <Compile Include="Model\tblPDTWHBill.cs" />
+    <Compile Include="Model\tblPDTWHBillType.cs" />
+    <Compile Include="Model\tblPDTWHFreight.cs" />
+    <Compile Include="Model\tblPDTWHIn.cs" />
+    <Compile Include="Model\tblPDTWHInBill.cs" />
+    <Compile Include="Model\tblPDTWHInTemp.cs" />
+    <Compile Include="Model\tblPDTWHTemp.cs" />
+    <Compile Include="Model\tblPDTWHTempFreight.cs" />
+    <Compile Include="Model\tblPlateColor.cs" />
+    <Compile Include="Model\tblPrintingInfo.cs" />
+    <Compile Include="Model\tblPrintingPart.cs" />
+    <Compile Include="Model\tblProcess.cs" />
+    <Compile Include="Model\tblProcessBOM.cs" />
+    <Compile Include="Model\tblProcessBomSub.cs" />
+    <Compile Include="Model\tblProcessPlate.cs" />
+    <Compile Include="Model\tblProcessSub.cs" />
+    <Compile Include="Model\tblProcessTemplate.cs" />
+    <Compile Include="Model\tblProcessTemplateSub.cs" />
+    <Compile Include="Model\tblProcurement.cs" />
+    <Compile Include="Model\tblProcurementChoose.cs" />
+    <Compile Include="Model\tblProcurementConfirmDate.cs" />
+    <Compile Include="Model\tblProcurementSub.cs" />
+    <Compile Include="Model\tblProcurementSubBOM.cs" />
+    <Compile Include="Model\tblProcurementTemp.cs" />
+    <Compile Include="Model\tblProduct.cs" />
+    <Compile Include="Model\tblProduction.cs" />
+    <Compile Include="Model\tblProductionMonth.cs" />
+    <Compile Include="Model\tblProductionPlan.cs" />
+    <Compile Include="Model\tblProductionPlanHeader.cs" />
+    <Compile Include="Model\tblProductionSample.cs" />
+    <Compile Include="Model\tblProductionSampleSub.cs" />
+    <Compile Include="Model\tblProductionSampleSubSub.cs" />
+    <Compile Include="Model\tblProductSampleBox.cs" />
+    <Compile Include="Model\tblProductSKU.cs" />
+    <Compile Include="Model\tblProductSKUAcetate.cs" />
+    <Compile Include="Model\tblProductStyle.cs" />
+    <Compile Include="Model\tblProformaInvoice.cs" />
+    <Compile Include="Model\tblQuotation.cs" />
+    <Compile Include="Model\tblQuotationBase.cs" />
+    <Compile Include="Model\tblQuotationBOM.cs" />
+    <Compile Include="Model\tblQuotationList.cs" />
+    <Compile Include="Model\tblQuotationProcess.cs" />
+    <Compile Include="Model\tblRightItem.cs" />
+    <Compile Include="Model\tblRightValue.cs" />
+    <Compile Include="Model\tblRptProductionCardComponent.cs" />
+    <Compile Include="Model\tblRptProductionCardComponentSub.cs" />
+    <Compile Include="Model\tblRptProductionCardMaterial.cs" />
+    <Compile Include="Model\tblRptProductionCardMould.cs" />
+    <Compile Include="Model\tblRptProductionCardQuality.cs" />
+    <Compile Include="Model\tblRptProductionComponent.cs" />
+    <Compile Include="Model\tblRptProductionComponentSub.cs" />
+    <Compile Include="Model\tblRptProductionHead.cs" />
+    <Compile Include="Model\tblRptProductionMaterial.cs" />
+    <Compile Include="Model\tblRptProductionProcedure.cs" />
+    <Compile Include="Model\tblRptProductionProcess.cs" />
+    <Compile Include="Model\tblRptProductionQuality.cs" />
+    <Compile Include="Model\tblRptProductionSection.cs" />
+    <Compile Include="Model\tblRptProductionSemi.cs" />
+    <Compile Include="Model\tblSalary.cs" />
+    <Compile Include="Model\tblSalarySum.cs" />
+    <Compile Include="Model\tblScrap.cs" />
+    <Compile Include="Model\tblScrappage.cs" />
+    <Compile Include="Model\tblSection.cs" />
+    <Compile Include="Model\tblSectionCost.cs" />
+    <Compile Include="Model\tblSupplier.cs" />
+    <Compile Include="Model\tblSupplierContact.cs" />
+    <Compile Include="Model\tblSurface.cs" />
+    <Compile Include="Model\tblSysAttachment.cs" />
+    <Compile Include="Model\tblSysAttachmentType.cs" />
+    <Compile Include="Model\tblSysLorR.cs" />
+    <Compile Include="Model\tblSysLorRCode.cs" />
+    <Compile Include="Model\tblSysMenu.cs" />
+    <Compile Include="Model\tblSysMenuCommand.cs" />
+    <Compile Include="Model\TblSysParameter.cs" />
+    <Compile Include="Model\tblSysRole.cs" />
+    <Compile Include="Model\tblSysRoleRight.cs" />
+    <Compile Include="Model\tblSysWindowType.cs" />
+    <Compile Include="Model\tblUser.cs" />
+    <Compile Include="Model\tblUserRole.cs" />
+    <Compile Include="StaticConstant.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyMiniOrm\MyMiniOrm.csproj">
+      <Project>{aeeb79bf-e3d6-42ad-9772-c0a22f0450d7}</Project>
+      <Name>MyMiniOrm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
