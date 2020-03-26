@@ -1,4 +1,4 @@
-namespace DemoEntityFrameworkORM
+namespace DemoEntityFrameworkORM.Model
 {
     using System;
     using System.Collections.Generic;
@@ -7,7 +7,7 @@ namespace DemoEntityFrameworkORM
     using System.Data.Entity.Spatial;
 
     [Table("tblOrder")]
-    public partial class tblOrder:BaseModel
+    public partial class tblOrder
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblOrder()
@@ -50,9 +50,6 @@ namespace DemoEntityFrameworkORM
 
         public short? FShipQty { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public byte? FModelQty { get; set; }
-
         [Column(TypeName = "date")]
         public DateTime? FDate { get; set; }
 
@@ -85,10 +82,6 @@ namespace DemoEntityFrameworkORM
 
         [StringLength(5)]
         public string FCurrency { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [StringLength(5)]
-        public string FStatus { get; set; }
 
         public bool FPrintInfo { get; set; }
 
@@ -124,9 +117,10 @@ namespace DemoEntityFrameworkORM
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public short? FQtyBalance { get; set; }
 
-        [Required]
         [StringLength(10)]
-        public string FOrderStatus { get; set; }
+        public string FStatus { get; set; }
+
+        public byte? FModelQty { get; set; }
 
         public virtual tblClient tblClient { get; set; }
 

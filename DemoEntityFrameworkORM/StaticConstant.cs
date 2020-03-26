@@ -16,6 +16,7 @@ namespace Framework
         /// <summary>
         /// 实体类程序及路径名称Models
         /// </summary>
+        internal static object ModelNameSpace = "DemoEntityFrameworkORM.Model";
         internal static object ModelAssemblyName = "DemoEntityFrameworkORM";
     }
 }

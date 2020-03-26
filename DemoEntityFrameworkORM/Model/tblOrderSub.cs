@@ -1,4 +1,4 @@
-namespace DemoEntityFrameworkORM
+namespace DemoEntityFrameworkORM.Model
 {
     using System;
     using System.Collections.Generic;
@@ -78,9 +78,9 @@ namespace DemoEntityFrameworkORM
         public string FModelPrint { get; set; }
 
         public bool FFinishSKU { get; set; }
-        public string FItem { get; set; }
-        public int FFlag { get; set; }
 
+        public int FFlag { get; set; }
+        [ForeignKey("FMaterialID")]
         public virtual tblMaterial tblMaterial { get; set; }
 
         public virtual tblOrder tblOrder { get; set; }

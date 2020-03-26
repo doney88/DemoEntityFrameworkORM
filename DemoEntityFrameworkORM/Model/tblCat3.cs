@@ -1,4 +1,4 @@
-namespace DemoEntityFrameworkORM
+namespace DemoEntityFrameworkORM.Model
 {
     using System;
     using System.Collections.Generic;
@@ -84,7 +84,7 @@ namespace DemoEntityFrameworkORM
         public bool FSet { get; set; }
 
         public bool FStartingMaterial { get; set; }
-
+        [ForeignKey("FCat2ID")]
         public virtual tblCat2 tblCat2 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

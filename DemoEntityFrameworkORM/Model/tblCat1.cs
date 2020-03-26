@@ -1,6 +1,5 @@
-namespace DemoEntityFrameworkORM
+namespace DemoEntityFrameworkORM.Model
 {
-    using MyMiniOrm.Commons;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -14,8 +13,6 @@ namespace DemoEntityFrameworkORM
         {
             tblCat2 = new HashSet<tblCat2>();
         }
-        //[MyKey(FieldName ="FCat1ID",IsIncrement =true)]
-        //public int Id { get; set; }
 
         [Key]
         public int FCat1ID { get; set; }

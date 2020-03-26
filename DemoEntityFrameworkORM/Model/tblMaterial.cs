@@ -1,4 +1,4 @@
-namespace DemoEntityFrameworkORM
+namespace DemoEntityFrameworkORM.Model
 {
     using System;
     using System.Collections.Generic;
@@ -126,7 +126,7 @@ namespace DemoEntityFrameworkORM
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblBOM> tblBOMs1 { get; set; }
-
+        [ForeignKey("FCat3ID")]
         public virtual tblCat3 tblCat3 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

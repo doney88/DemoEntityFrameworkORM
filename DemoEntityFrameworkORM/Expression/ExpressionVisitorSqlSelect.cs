@@ -16,7 +16,7 @@ namespace Framework
     public class ExpressionVisitorSqlSelect: ExpressionVisitor
     {
         private List<string> _ColumnList = new List<string>();
-        public List<PropertyInfo> PropertyInfoArray = new List<PropertyInfo>();
+        public List<MemberInfo> PropertyInfoArray = new List<MemberInfo>();
         public string SqlSelect 
         {
             get { return "SELECT " + string.Join(",",this._ColumnList.ToArray()); }
@@ -40,8 +40,7 @@ namespace Framework
             if (node == null)
                 return node;
             _ColumnList.Add(node.Member.DeclaringType.Name + "." + node.Member.Name);
-            Type type = Type.GetType($"{StaticConstant.ModelAssemblyName}.{node.Member.DeclaringType.Name},{StaticConstant.ModelAssemblyName}", true);
-            PropertyInfoArray.Add(type.GetProperty(node.Member.Name));
+            PropertyInfoArray.Add(node.Member);
             return node;
         }
 

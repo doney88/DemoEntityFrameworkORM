@@ -12,6 +12,7 @@ namespace Framework
         internal static object ModelAssemblyName = "Models";
         ExpressionVisitorSqlSelect selectVisitor = new ExpressionVisitorSqlSelect();
         ExpressionVisitorSqlWhere whereVisitor = new ExpressionVisitorSqlWhere();
+        Dictionary<int, Expression> dicTableExpression = new Dictionary<int, Expression>();
         public string Sql { get; set; }
         public string GetSql<T>(Expression<Func<IQueryable<T>, object>> expression)
         {
@@ -51,6 +52,10 @@ namespace Framework
             {
                 Visit(arg);
             }
+            if (node.Object != null)
+            {
+                Visit(node.Object);
+            }
             switch (node.Method.Name)
             {
                 case "Where":
@@ -60,6 +65,13 @@ namespace Framework
                 default:
                     break;
             }
+            return node;
+        }
+
+        protected override Expression VisitBinary(BinaryExpression node)
+        {
+            Visit(node.Left);
+            Visit(node.Right);
             return node;
         }
     }
