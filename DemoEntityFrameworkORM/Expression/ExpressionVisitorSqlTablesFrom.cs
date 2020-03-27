@@ -11,8 +11,13 @@ namespace Framework
 {
     public class ExpressionVisitorSqlTablesFrom: ExpressionVisitor
     {
-        Stack<MemberInfo> memberinfoStack = new Stack<MemberInfo>();
+        public Stack<MemberInfo> memberInfoStack = new Stack<MemberInfo>();
 
+        public void VisitFromExpression(Expression expression)
+        {
+            memberInfoStack.Clear();        //clear stack at begining of visiting
+            Visit(expression);
+        }
         public override Expression Visit(Expression node)
         {
             if (node == null)
@@ -25,17 +30,15 @@ namespace Framework
             
             if(node.Member.IsDefined(typeof(ForeignKeyAttribute)))  //use namespace to identify entity class
             {
-                memberinfoStack.Push(node.Member);
+                memberInfoStack.Push(node.Member);
             }
-            Visit(node.Expression);
-
-            return node;
+            return Visit(node.Expression);
         }
 
         protected override Expression VisitLambda<T>(Expression<T> node)
         {
             Visit(node.Body);
-            memberinfoStack.Push(node.Parameters[0].Type);
+            memberInfoStack.Push(node.Parameters[0].Type);
             
             return node;
         }

@@ -67,27 +67,32 @@ namespace DemoEntityFrameworkORM
             //                                });
 
             SqlBuilder sqlBuilder = new SqlBuilder();
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                ///Select必须在Where之后
-                sqlBuilder.GetSql<tblOrderSub>(sl => sl.Where(s => !s.tblMaterial.tblCat3.tblCat2.tblCat1.FCat1.Equals("产品") &&
-                                                                    !s.FFlag.Equals(1)).
-                                                Select(s => new
-                                                {
-                                                    s.tblOrder.FOrderNum,
-                                                    s.tblOrder.FOrderCust,
-                                                    s.tblMaterial.FItem,
-                                                    s.tblMaterial.FSpec,
-                                                    s.FQty
-                                                }));
-                Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
-                stopwatch.Stop();
-                ExpressionVisitorSqlTablesFrom visitorFrom = new ExpressionVisitorSqlTablesFrom();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            ///Select必须在Where之后
+            sqlBuilder.GetSql<tblOrderSub>(sl => sl.Where(s => s.tblMaterial.tblCat3.tblCat2.tblCat1.FCat1.Equals("产品") &&
+                                                                !s.FFlag.Equals(1)).
+                                            Select(s => new
+                                            {
+                                                s.tblOrder.FOrderNum,
+                                                s.tblOrder.FOrderCust,
+                                                s.tblMaterial.FItem,
+                                                s.tblMaterial.FSpec,
+                                                s.FQty
+                                            }));
+            Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
+            stopwatch.Stop();
+            //TestFromVisitor();
+            Console.ReadKey();
 
-                Expression<Func<tblOrderSub, object>> expression = s => s.tblMaterial.tblCat3.tblCat2.tblCat1.FCat1;
-                visitorFrom.Visit(expression);
-                Console.ReadKey();
+        }
 
+        private static void TestFromVisitor()
+        {
+            ExpressionVisitorSqlTablesFrom visitorFrom = new ExpressionVisitorSqlTablesFrom();
+
+            Expression<Func<tblOrderSub, object>> expression = s => s.tblMaterial.tblCat3.tblCat2.tblCat1.FCat1;
+            visitorFrom.Visit(expression);
         }
     }
 }

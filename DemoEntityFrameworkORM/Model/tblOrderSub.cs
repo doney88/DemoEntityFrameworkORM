@@ -82,7 +82,7 @@ namespace DemoEntityFrameworkORM.Model
         public int FFlag { get; set; }
         [ForeignKey("FMaterialID")]
         public virtual tblMaterial tblMaterial { get; set; }
-
+        [ForeignKey("FOrderID")]
         public virtual tblOrder tblOrder { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
