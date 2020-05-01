@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using DemoEntityFrameworkORM.Model;
 using System.ComponentModel;
 using System.Reflection;
+using System.Data.SqlTypes;
 
 namespace DemoEntityFrameworkORM
 {
@@ -70,29 +71,46 @@ namespace DemoEntityFrameworkORM
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             ///Select必须在Where之后
-            sqlBuilder.GetSql<tblOrderSub>(sl => sl.Where(s => s.tblMaterial.tblCat3.tblCat2.tblCat1.FCat1.Equals("产品") &&
-                                                                !s.FFlag.Equals(1)).
-                                            Select(s => new
-                                            {
-                                                s.tblOrder.FOrderNum,
-                                                s.tblOrder.FOrderCust,
-                                                s.tblMaterial.FItem,
-                                                s.tblMaterial.FSpec,
-                                                s.FQty
-                                            }));
+            //sqlBuilder.GetSql<tblOrderSub>(sl => sl.Where(s => s.tblMaterial.tblCat3.tblCat2.tblCat1.FCat1.Equals("产品") &&
+            //                                                    !s.FFlag.Equals(1)).
+            //                                Select(s => new
+            //                                {
+            //                                    s.tblOrder.FOrderNum,
+            //                                    s.tblOrder.FOrderCust,
+            //                                    s.tblMaterial.FItem,
+            //                                    s.tblMaterial.FSpec,
+            //                                    s.FQty
+            //                                }));
+            sqlBuilder.GetSql<tblEnterprise>((e) => 
+                                                e.Where(c => c.FRole.Equals(2))
+                                                .Select(s => new
+                                                {
+                                                   s.tblCat2.FCat2,
+                                                   s.FEnterpriseName,
+                                                    s.FMainProduct,
+                                                   s.FShortName
+
+                                                })
+                                                );
             Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
+            Console.WriteLine(sqlBuilder.Sql);
             stopwatch.Stop();
             //TestFromVisitor();
             Console.ReadKey();
 
+        }
+        private void TestEF()
+        {
+            Model1 ef = new Model1();
+            
         }
 
         private static void TestFromVisitor()
         {
             ExpressionVisitorSqlTablesFrom visitorFrom = new ExpressionVisitorSqlTablesFrom();
 
-            Expression<Func<tblOrderSub, object>> expression = s => s.tblMaterial.tblCat3.tblCat2.tblCat1.FCat1;
-            visitorFrom.Visit(expression);
+            //Expression<Func<tblOrderSub, object>> expression = s => s.tblMaterial.tblCat3.tblCat2.tblCat1.FCat1;
+            //visitorFrom.Visit(expression);
         }
     }
 }

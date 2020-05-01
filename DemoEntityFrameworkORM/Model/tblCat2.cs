@@ -11,8 +11,7 @@ namespace DemoEntityFrameworkORM.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblCat2()
         {
-            tblCat3 = new HashSet<tblCat3>();
-            tblSuppliers = new HashSet<tblSupplier>();
+            tblEnterprises = new HashSet<tblEnterprise>();
         }
 
         [Key]
@@ -33,13 +32,7 @@ namespace DemoEntityFrameworkORM.Model
         [StringLength(255)]
         public string FNote { get; set; }
 
-        [ForeignKey("FCat1ID")]
-        public virtual tblCat1 tblCat1 { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblCat3> tblCat3 { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblSupplier> tblSuppliers { get; set; }
+        public virtual ICollection<tblEnterprise> tblEnterprises { get; set; }
     }
 }

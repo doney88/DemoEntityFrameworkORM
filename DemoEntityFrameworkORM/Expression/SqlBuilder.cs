@@ -70,7 +70,7 @@ namespace Framework
         protected override Expression VisitMember(MemberExpression node)
         {
             fromVisitor.VisitFromExpression(node);
-            if (memberInfoLists.Count==0)
+            if (memberInfoLists.Count==0 && fromVisitor.memberInfoStack.Count!=0)
                 memberInfoLists.Add(fromVisitor.memberInfoStack.ToList());
             else
             {
@@ -78,6 +78,7 @@ namespace Framework
                 if (memberinfoList.Count == 0)
                     return node;
                 List<MemberInfo> newMemberInfoList = new List<MemberInfo>();
+                //去重
                 for (int ii = 0; ii < memberinfoList.Count; ii++)
                 {
                     bool IsExists = false;
